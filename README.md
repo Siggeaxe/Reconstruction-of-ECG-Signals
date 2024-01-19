@@ -1,10 +1,11 @@
 This project is centered around the 2010 PhysioNet Challenge, titled "Mind the Gap," and specifically focuses on reconstructing missing segments in an ECG signal through adaptive filtering. Two adaptive filtering methods, namely RLS and ADAM, were employed. The project included hyperparameter studies aimed at identifying optimal filter parameters for both methods.
 
+The filters underwent training using 10-minute recordings of two distinct heart signals: ECG V and ECG AVR. To determine hyperparameters such as filter length (Adam & RLS) and forgetting factor (RLS), grid search methodology was applied. The search began with a broad range of hyperparameter values, progressively narrowing the span (with an equivalent number of hyperparameter values). This approach was adopted to enhance the resolution of the search.
+
 | Reconstruction using ADAM    | Hyperparameter study   |                                                                                                                                                   
 | ---           | ---           |                                                                                                                                                   
 | ![](https://github.com/Siggeaxe/Reconstruction-of-ECG-Signals/blob/main/Plots/Adam/Plots/Adam_patient_5_length_15_small.png)  |  ![](https://github.com/Siggeaxe/Reconstruction-of-ECG-Signals/blob/main/Plots/Adam/Hyperpar/Adam_hyper_patient_5_length_30_Q1.png) |
 
-The filters underwent training using 10-minute recordings of two distinct heart signals: ECG V and ECG AVR. To determine hyperparameters such as filter length (Adam & RLS) and forgetting factor (RLS), grid search methodology was applied. The search began with a broad range of hyperparameter values, progressively narrowing the span (with an equivalent number of hyperparameter values). This approach was adopted to enhance the resolution of the search.
 
 The missing 10 seconds of the ECG signals were subsequently reconstructed using the two adaptive filters and evaluated using two quality functions from the PhysioNet challenge:
 - Q1 = 1 - mse(x[n], x_hat[n]) / var(x[n])
